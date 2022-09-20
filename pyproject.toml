@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "mlflow-mlserve-kubernetes"
+version = "0.1.0"
+description = "Package mlflow models as mlserver docker images"
+authors = ["Martin Morset <mmorset@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+mlflow = "^1.28.0"
+scipy = "< 1.6"
+boto3 = "^1.24.68"
+
+[tool.poetry.plugins]
+
+[tool.poetry.plugins."mlflow.deployments"]
+"k8s" = "mlflow_mlserve_kubernetes"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+black = {version = "^22.8.0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
