@@ -28,14 +28,14 @@ def build(  # noqa: D103
         ...,
         help="See https://www.mlflow.org/docs/latest/python_api/mlflow.artifacts.html for possible formats",
     ),
-    tags: Optional[List[str]] = typer.Option(  # noqa: B008
+    tag: Optional[List[str]] = typer.Option(  # noqa: B008
         None,
-        help="List of tags to apply to the built image.",
+        help="Tag the image (multiple values allowed!), otherwise no tag will be used",
     ),
     log_level: str = typer.Option("INFO"),  # noqa: B008
 ):
     logging.getLogger().setLevel(log_level)
-    download_and_build(artifact_uri, tags)
+    download_and_build(artifact_uri, tag)
 
 
 if __name__ == "__main__":

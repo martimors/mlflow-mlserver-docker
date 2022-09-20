@@ -1,0 +1,27 @@
+# When release publish to pypi
+
+name: CI
+on:
+  release:
+    types: [created]
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run image
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: "1.1"
+      - name: Publish to PyPi
+        env:
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: poetry publish --skip-existing --build --username __token__ --password $PYPI_PASSWORD

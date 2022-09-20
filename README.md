@@ -18,3 +18,12 @@ pip install mlflow-mlserver-docker
 ```sh
 mlflow-mlserver-docker build runs:/fg8934ug54eg9hrdegu904/model
 ```
+
+## Development
+
+```sh
+poetry install
+poetry self add poetry-version-plugin
+```
+
+Make sure `docker` is running.

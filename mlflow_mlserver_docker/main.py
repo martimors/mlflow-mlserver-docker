@@ -63,13 +63,15 @@ def _create_mode_settings_file(run_id: str, path: Path) -> None:
 def _build_model_service_image(path: Path, tags: Optional[List[str]] = None):
     if not tags:
         logger.warning("No tags provided, will build image without tags.")
+    else:
+        logger.debug("Found provided tags %s", tags)
 
     image = docker.build(
         path,
         tags=tags,
         file=Path(__file__).parent / "Dockerfile",
     )
-    logger.debug("Successfully built image %s: %s", image.id, image.metadata)
+    logger.debug("Successfully built image %s", image.id)
 
 
 def download_and_build(artifact_uri: str, tag: Optional[List[str]]):
