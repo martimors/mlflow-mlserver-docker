@@ -1,12 +1,14 @@
 [tool.poetry]
 name = "mlflow-mlserver-docker"
-version = "0.3.0"
+version = "0.4.0"
 description = "Package mlflow models as mlserver docker images"
 authors = ["Martin Morset <mmorset@gmail.com>"]
 packages = [
     { include = "mlflow_mlserver_docker" }
 ]
 include = ["mlflow_mlserver_docker/Dockerfile"]
+readme = "README.md"
+homepage = "https://github.com/dingobar/mlflow-mlserver-docker"
 
 [tool.poetry.scripts]
 mlflow-mlserver-docker = "mlflow_mlserver_docker.cli:app"
