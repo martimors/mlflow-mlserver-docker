@@ -20,8 +20,8 @@ jobs:
       - name: Run image
         uses: abatilo/actions-poetry@v2.0.0
         with:
-          poetry-version: "1.1"
+          poetry-version: "1.2"
       - name: Publish to PyPi
         env:
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: poetry publish --skip-existing --build --username __token__ --password $PYPI_PASSWORD
+        run: poetry publish --build --username __token__ --password $PYPI_PASSWORD

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mlflow-mlserver-docker"
-version = "0.2.0"
+version = "0.3.0"
 description = "Package mlflow models as mlserver docker images"
 authors = ["Martin Morset <mmorset@gmail.com>"]
 packages = [
