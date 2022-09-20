@@ -1,25 +1,56 @@
 [tool.poetry]
-name = "mlflow-mlserve-kubernetes"
+name = "mlflow-mlserver-docker"
 version = "0.1.0"
 description = "Package mlflow models as mlserver docker images"
 authors = ["Martin Morset <mmorset@gmail.com>"]
+packages = [
+    { include = "mlflow_mlserver_docker" }
+]
+include = ["mlflow_mlserver_docker/Dockerfile"]
+
+[tool.poetry.scripts]
+mlflow-mlserver-docker = "mlflow_mlserver_docker.cli:app"
 
 [tool.poetry.dependencies]
-python = "~3.9"
-mlflow = "^1.28.0"
-scipy = "< 1.6"
-boto3 = "^1.24.68"
-
-[tool.poetry.plugins]
-
-[tool.poetry.plugins."mlflow.deployments"]
-"k8s" = "mlflow_mlserve_kubernetes"
+python = "^3.8"
+mlflow-skinny = "^1.28.0"
+python-on-whales = "^0.52.0"
+python-dotenv = "^0.21.0"
+typer = {extras = ["all"], version = "^0.6.1"}
+boto3 = "^1.24.76"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.group.dev.dependencies]
 black = {version = "^22.8.0", allow-prereleases = true}
+pytest = "^7.1.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+pretty = true
+warn_unused_ignores = true
+warn_return_any = true
