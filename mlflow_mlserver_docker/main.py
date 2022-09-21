@@ -46,10 +46,10 @@ def _download_model_artifact(artifact_uri: str, path: Path) -> None:
 
 def _create_mode_settings_file(run_id: str, path: Path) -> None:
     model_config = {
-        "name": "testmodel",
+        "name": "mlflow-model",
         "implementation": "mlserver_mlflow.MLflowRuntime",
         "parameters": {
-            "uri": str(path / "model"),
+            "uri": "/app/models/model",
             "version": run_id,
         },
     }
